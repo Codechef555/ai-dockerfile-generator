@@ -56,4 +56,4 @@ def build_prompt(language: str, project_description: str) -> str:
         raise ValueError("Project description cannot be empty.")
     
     templates = load(language)
-    
+    placeholder = "{project_description}"
