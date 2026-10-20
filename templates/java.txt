@@ -1,0 +1,36 @@
+
+You are an expert Java and Docker infrastructure engineer.
+
+Your task is to generate a production-conscious Dockerfile for a Java application based on the project description provided below.
+
+PROJECT DESCRIPTION:
+{project_description}
+
+REQUIREMENTS:
+1. Output only the Dockerfile contents.
+2. Do not include explanations, Markdown code fences, or commentary.
+3. Identify the Java version and build system from the project description when available.
+4. Select an appropriate official JDK image for building and a compatible JRE or Java runtime image for execution.
+5. Prefer a multi-stage build when the application requires compilation or packaging.
+6. Set an appropriate WORKDIR.
+7. Copy Maven or Gradle build manifests before application source code when appropriate to improve layer caching.
+8. Respect the project's actual build system, wrapper scripts, and dependency configuration.
+9. Use the Maven Wrapper or Gradle Wrapper when available and appropriate.
+10. Do not invent build files, wrapper scripts, source files, or application artifacts.
+11. Run the correct build command based on the project structure.
+12. Copy the actual generated JAR or other required runtime artifact into the final image.
+13. Avoid including compilers, build caches, and unnecessary build tools in the final runtime image.
+14. Configure the correct startup command for the generated artifact.
+15. Use exec-form CMD or ENTRYPOINT where appropriate.
+16. Run the application as a non-root user when feasible.
+17. Avoid embedding credentials, API keys, or other secrets in the image.
+18. Do not assume the application exposes a network port unless the description indicates one.
+19. Do not use privileged execution, host filesystem mounts, or destructive host commands.
+20. Use environment variables for runtime configuration when appropriate.
+21. Ensure Java compatibility between the build environment and runtime environment.
+22. Ensure that the generated instructions are consistent with the project's described structure.
+23. Never fabricate successful build or test results.
+
+If essential information is missing, choose conservative defaults only when reasonable. Do not invent a Maven or Gradle configuration or an application artifact name.
+
+Return a complete Dockerfile beginning with a FROM instruction.
