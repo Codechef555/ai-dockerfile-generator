@@ -36,3 +36,21 @@ def load_template(language: str) -> str:
     template_path = TEMPLATES_DIR / SUPPORTED_LANGUAGES[normalized_language]
 
     return template_path.read_text(encoding="utf-8")
+
+
+def build_prompt(language: str, project_description: str) -> str:
+    """Build a complete LLM prompt from a language template and project description.
+
+    Args:
+        language: Target programming language.
+        project_description: Description of the application to containerize.
+
+    Returns:
+        A completed prompt ready to send to Ollama.
+
+    Raises:
+        ValueError: If the language or project description is invalid.
+        FileNotFoundError: If the requested template does not exist.
+    """
+    if not isinstance(project_description, str) or not project_description.strip():
+        raise ValueError("Project description cannot be empty.")
