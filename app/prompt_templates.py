@@ -54,3 +54,6 @@ def build_prompt(language: str, project_description: str) -> str:
     """
     if not isinstance(project_description, str) or not project_description.strip():
         raise ValueError("Project description cannot be empty.")
+    
+    templates = load(language)
+    
