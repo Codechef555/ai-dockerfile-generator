@@ -57,3 +57,14 @@ def build_prompt(language: str, project_description: str) -> str:
     
     templates = load(language)
     placeholder = "{project_description}"
+    
+    if placeholder not in template:
+        raise ValueError(
+            f"The template for {language!r} is missing "
+            f"the {placeholder} placeholder."
+        )
+
+    return template.replace(
+        placeholder,
+        project_description.strip(),
+    )
