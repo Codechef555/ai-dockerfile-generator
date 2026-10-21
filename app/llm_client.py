@@ -1,3 +1,3 @@
 import os 
 import ollama
-from ollama import chat
+from ollama import chat, ResponseError
