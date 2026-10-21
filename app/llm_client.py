@@ -87,3 +87,17 @@ class LLMClient:
             raise OllamaClientError(
                 f"Failed to check Ollama model availability: {exc}"
             ) from exc
+    
+    def generate(self, prompt: str) -> str:
+        """Generate text using the configured local model.
+
+        Args:
+            prompt: Complete prompt to send to the model.
+
+        Returns:
+            The generated text.
+
+        Raises:
+            ValueError: If the prompt is empty.
+            OllamaClientError: If generation fails or returns empty output.
+        """
