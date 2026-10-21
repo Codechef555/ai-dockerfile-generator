@@ -46,3 +46,11 @@ class LLMClient:
         Raises:
             OllamaClientError: If the server cannot be reached.
         """
+        try:
+            self.client.list()
+            return True
+        except Exception as exc:
+            raise OllamaClientError(
+                f"Cannot connect to Ollama at {self.host}. "
+                "Ensure Ollama is installed and running."
+            ) from exc
