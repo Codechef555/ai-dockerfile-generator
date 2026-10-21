@@ -37,4 +37,12 @@ class LLMClient:
             host=self.host,
             timeout=self.timeout,
         )
-    def 
+    def check_connection(self) -> bool:
+        """Check whether the Ollama server is reachable.
+
+        Returns:
+            True if the server responds successfully.
+
+        Raises:
+            OllamaClientError: If the server cannot be reached.
+        """
