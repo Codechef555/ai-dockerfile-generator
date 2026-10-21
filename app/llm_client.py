@@ -54,3 +54,13 @@ class LLMClient:
                 f"Cannot connect to Ollama at {self.host}. "
                 "Ensure Ollama is installed and running."
             ) from exc
+    
+    def check_model(self) -> bool:
+        """Check whether the configured model is available locally.
+
+        Returns:
+            True if the model is installed.
+
+        Raises:
+            OllamaClientError: If the model is unavailable or the check fails.
+        """
