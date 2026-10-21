@@ -101,3 +101,6 @@ class LLMClient:
             ValueError: If the prompt is empty.
             OllamaClientError: If generation fails or returns empty output.
         """
+
+        if not isinstance(prompt, str) or not prompt.strip():
+            raise ValueError("Prompt cannot be empty.")
