@@ -104,3 +104,29 @@ class LLMClient:
 
         if not isinstance(prompt, str) or not prompt.strip():
             raise ValueError("Prompt cannot be empty.")
+        try:
+            response = self.client.generate(
+                model=self.model,
+                prompt=prompt,
+                stream=False,
+            )
+
+            generated_text = response.response.strip()
+
+            if not generated_text:
+                raise OllamaClientError(
+                    "Ollama returned an empty response."
+                )
+
+            return generated_text
+
+        except OllamaClientError:
+            raise
+        except ResponseError as exc:
+            raise OllamaClientError(
+                f"Ollama model error: {exc}"
+            ) from exc
+        except Exception as exc:
+            raise OllamaClientError(
+                f"Failed to generate text using Ollama: {exc}"
+            ) from exc
