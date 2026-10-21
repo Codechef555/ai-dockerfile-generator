@@ -64,3 +64,26 @@ class LLMClient:
         Raises:
             OllamaClientError: If the model is unavailable or the check fails.
         """
+        try:
+            response = self.client.list()
+            models = response.models
+
+            available_models = {
+                model.model or model.name
+                for model in models
+            }
+
+            if self.model not in available_models:
+                raise OllamaClientError(
+                    f"Model '{self.model}' is not installed. "
+                    f"Run: ollama pull {self.model}"
+                )
+
+            return True
+
+        except OllamaClientError:
+            raise
+        except Exception as exc:
+            raise OllamaClientError(
+                f"Failed to check Ollama model availability: {exc}"
+            ) from exc
