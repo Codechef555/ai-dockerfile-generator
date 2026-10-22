@@ -29,4 +29,5 @@ class DockerfileGenerator:
             FileNotFoundError: If the language template is missing.
             OllamaClientError: If Ollama generation fails.
         """
-        
+        prompts = build_prompt(language, project_description)
+        response = self.llm_client.generate(prompt)
