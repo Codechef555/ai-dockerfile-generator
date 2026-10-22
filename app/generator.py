@@ -31,3 +31,5 @@ class DockerfileGenerator:
         """
         prompts = build_prompt(language, project_description)
         response = self.llm_client.generate(prompt)
+        dockerfile = self._clean_output(response)
+        
