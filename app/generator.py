@@ -47,4 +47,6 @@ class DockerfileGenerator:
         Returns:
             Cleaned Dockerfile text.
         """
-        
+        if not isinstance(response, str):
+            raise ValueError("LLM response must be a string.")
+        output = response.strip()
