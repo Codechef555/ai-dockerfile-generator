@@ -67,3 +67,14 @@ class DockerfileGenerator:
         )
 
         return output.strip()
+    def generate_dockerfile(language: str, project_description: str) -> str:
+        """Convenience function for generating a Dockerfile.
+        Args:
+            language: Target language: python, nodejs, or java.
+            project_description: Description of the application.
+        Returns:
+            Generated Dockerfile content.
+        """
+
+        generator = DockerfileGenerator()
+        return generator.generate(language, project_description)
