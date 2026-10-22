@@ -36,3 +36,15 @@ class DockerfileGenerator:
         if not dockerfile:
             raise ValueError("The LLM returned an empty Dockerfile after cleaning.")
         return dockerfile
+
+    @staticmethod
+    def _clean_output(response: str) -> str:
+        """Remove surrounding Markdown fences and unwanted whitespace.
+
+        Args:
+            response: Raw text returned by the LLM.
+
+        Returns:
+            Cleaned Dockerfile text.
+        """
+        
