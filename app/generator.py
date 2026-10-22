@@ -58,3 +58,12 @@ class DockerfileGenerator:
             count=1,
             flags=re.IGNORECASE,
         )
+        # Remove a closing Markdown fence.
+        output = re.sub(
+            r"\r?\n?[ \t]*```[ \t]*\Z",
+            "",
+            output,
+            count=1,
+        )
+
+        return output.strip()
