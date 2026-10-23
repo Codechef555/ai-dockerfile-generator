@@ -160,3 +160,11 @@ class DockerfileValidator:
                 re.IGNORECASE | re.MULTILINE,
             ):
                 warnings.append(message)
+        
+        # Flag environment variables or build arguments that may contain secrets.
+        secret_pattern = re.compile(
+            r"^\s*(?:ARG|ENV)\s+"
+            r"([A-Za-z_][A-Za-z0-9_]*)"
+            r"(?:\s*=\s*|\s+)(.*)$",
+            re.IGNORECASE | re.MULTILINE,
+        )
