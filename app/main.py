@@ -33,3 +33,8 @@ def display_validation_result(result: ValidationResult) -> None:
 
         for warning in result.warnings:
             console.print(f"  [yellow]![/yellow] {warning}")
+    if result.errors:
+        console.print("\n[bold red]Validation Errors[/bold red]")
+
+        for error in result.errors:
+            console.print(f"  [red]x[/red] {error}")
