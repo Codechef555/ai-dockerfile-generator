@@ -87,3 +87,14 @@ class DockerfileValidator:
             )
         else:
             passed_checks.append("No Markdown code fences found.")
+        
+        # Warn when the base image uses the mutable latest tag.
+        if re.search(
+            r"^\s*FROM\s+(?:--platform=\S+\s+)?\S+:latest(?:\s|$)",
+            dockerfile,
+            re.IGNORECASE | re.MULTILINE,
+        ):
+            warnings.append(
+                "A base image uses the 'latest' tag. "
+                "Consider pinning a specific version for reproducibility."
+            )
