@@ -202,3 +202,11 @@ def main() -> int:
                 line_numbers=True,
             )
         )
+
+        # Validate the generated content.
+        console.print("\n[cyan]Validating Dockerfile...[/cyan]")
+
+        validator = DockerfileValidator()
+        validation_result = validator.validate(dockerfile_content)
+
+        display_validation_result(validation_result)
