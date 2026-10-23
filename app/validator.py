@@ -54,3 +54,12 @@ class DockerfileValidator:
             for line in lines
             if line.strip() and not line.lstrip().startswith("#")
         ]
+        
+        if not meaningful_lines:
+            errors.append("Dockerfile contains no executable instructions.")
+            return ValidationResult(
+                is_valid=False,
+                errors=errors,
+                warnings=warnings,
+                passed_checks=passed_checks,
+            )
