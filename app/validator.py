@@ -48,3 +48,9 @@ class DockerfileValidator:
         passed_checks: list[str] = []
 
         lines = dockerfile.splitlines()
+        # Remove blank lines and comments for basic instruction checks.
+        meaningful_lines = [
+            line.strip()
+            for line in lines
+            if line.strip() and not line.lstrip().startswith("#")
+        ]
