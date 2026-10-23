@@ -48,3 +48,12 @@ def get_product(product_id: int) -> dict:
         status_code=404,
         detail=f"Product with ID {product_id} was not found.",
     )
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=8000,
+    )
