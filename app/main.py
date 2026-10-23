@@ -88,3 +88,8 @@ def save_dockerfile(
     destination = destination.resolve()
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(content.rstrip() + "\n", encoding="utf-8")
+
+    console.print(
+        f"\n[bold green]Dockerfile saved successfully:[/bold green]\n"
+        f"{destination}"
+    )
