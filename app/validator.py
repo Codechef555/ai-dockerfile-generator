@@ -43,3 +43,6 @@ class DockerfileValidator:
                 is_valid=False,
                 errors=["Dockerfile content cannot be empty."],
             )
+        errors: list[str] = []
+        warnings: list[str] = []
+        passed_checks: list[str] = []
