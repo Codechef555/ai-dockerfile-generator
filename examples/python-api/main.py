@@ -15,3 +15,11 @@ PRODUCTS = [
 ]
 
 @app.get("/")
+def home() -> dict:
+    """Return a welcome message."""
+    return {
+        "message": "Python API is running!",
+        "application": "Python API Demo",
+        "version": "1.0.0",
+        "docs": "/docs",
+    }
