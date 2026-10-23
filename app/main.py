@@ -181,3 +181,15 @@ def main() -> int:
         # Generate Dockerfile content.
         generator = DockerfileGenerator(llm_client=llm_client)
 
+        console.print(
+            f"\n[cyan]Generating Dockerfile for {language}...[/cyan]"
+        )
+        
+        with console.status(
+            "[bold cyan]Asking the local LLM to generate a Dockerfile..."
+        ):
+            dockerfile_content = generator.generate(
+                language=language,
+                project_description=description,
+            )
+
