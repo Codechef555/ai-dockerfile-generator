@@ -73,3 +73,14 @@ def save_dockerfile(
 
     if not destination.name:
         raise ValueError("Output path must specify a filename.")
+    
+    if destination.exists():
+        if not destination.is_file():
+            raise ValueError("Output path must refer to a file.")
+
+        if not Confirm.ask(
+            f"[yellow]{destination} already exists. Overwrite it?[/yellow]",
+            default=False,
+        ):
+            console.print("[yellow]Save cancelled.[/yellow]")
+            return destination
