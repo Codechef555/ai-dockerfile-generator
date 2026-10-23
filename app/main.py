@@ -224,3 +224,25 @@ def main() -> int:
                     "Review the errors and try again.[/yellow]"
                 )
                 return 1
+        
+        # Save the generated Dockerfile.
+        if Confirm.ask(
+            f"\nSave the Dockerfile to '{output_path}'?",
+            default=True,
+        ):
+            save_dockerfile(
+                content=dockerfile_content,
+                output_path=output_path,
+            )
+        else:
+            console.print("[yellow]Dockerfile was not saved.[/yellow]")
+
+        console.print(
+            "\n[bold green]Generation process completed.[/bold green]"
+        )
+        console.print(
+            "[dim]Static validation does not guarantee that the Dockerfile "
+            "builds or runs successfully.[/dim]"
+        )
+
+        return 0
