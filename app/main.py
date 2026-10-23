@@ -167,3 +167,17 @@ def main() -> int:
         default_output = DEFAULT_OUTPUT_DIR / "Dockerfile"
         output_path = args.output or str(default_output)
 
+        # Initialize the local LLM client.
+        llm_client = LLMClient(model=args.model)
+
+        console.print("\n[cyan]Checking Ollama connection...[/cyan]")
+        llm_client.check_connection()
+        console.print("[green]Ollama is running.[/green]")
+
+        console.print("[cyan]Checking model availability...[/cyan]")
+        llm_client.check_model()
+        console.print("[green]Configured model is available.[/green]")
+
+        # Generate Dockerfile content.
+        generator = DockerfileGenerator(llm_client=llm_client)
+
