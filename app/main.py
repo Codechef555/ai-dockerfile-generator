@@ -38,3 +38,11 @@ def display_validation_result(result: ValidationResult) -> None:
 
         for error in result.errors:
             console.print(f"  [red]x[/red] {error}")
+    if result.is_valid:
+        console.print(
+            "\n[bold green]Validation status: PASSED[/bold green]"
+        )
+    else:
+        console.print(
+            "\n[bold red]Validation status: FAILED[/bold red]"
+        )
