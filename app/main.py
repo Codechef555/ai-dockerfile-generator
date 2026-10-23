@@ -22,3 +22,14 @@ def display_validation_result(result: ValidationResult) -> None:
     Args:
         result: Result returned by DockerfileValidator.
     """
+    if result.passed_checks:
+        console.print("\n[bold green]Passed Checks[/bold green]")
+
+        for check in result.passed_checks:
+            console.print(f"  [green]+[/green] {check}")
+
+    if result.warnings:
+        console.print("\n[bold yellow]Warnings[/bold yellow]")
+
+        for warning in result.warnings:
+            console.print(f"  [yellow]![/yellow] {warning}")
