@@ -63,7 +63,7 @@ class DockerfileValidator:
                 warnings=warnings,
                 passed_checks=passed_checks,
             )
-            
+
         # Check for a valid base image instruction.
         if self.FROM_PATTERN.search(dockerfile):
             passed_checks.append("Base image instruction (FROM) found.")
@@ -71,3 +71,19 @@ class DockerfileValidator:
             errors.append(
                 "Missing or invalid FROM instruction specifying a base image."
             )
+        # Check whether the file contains recognizable Docker instructions.
+        if any(
+            self.INSTRUCTION_PATTERN.match(line)
+            for line in meaningful_lines
+        ):
+            passed_checks.append("Recognizable Docker instructions found.")
+        else:
+            errors.append("No recognizable Docker instructions were found.")
+
+        # Detect Markdown fences accidentally included in the output.
+        if "```" in dockerfile:
+            errors.append(
+                "Markdown code fences found. Remove them from the Dockerfile."
+            )
+        else:
+            passed_checks.append("No Markdown code fences found.")
