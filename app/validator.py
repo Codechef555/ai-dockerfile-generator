@@ -23,3 +23,5 @@ class DockerfileValidator:
         r"^\s*FROM\s+(?:--platform=\S+\s+)?\S+",
         re.IGNORECASE | re.MULTILINE,
     )
+    def validate(self, dockerfile: str) -> ValidationResult:
+        
