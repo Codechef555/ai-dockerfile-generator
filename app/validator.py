@@ -168,3 +168,14 @@ class DockerfileValidator:
             r"(?:\s*=\s*|\s+)(.*)$",
             re.IGNORECASE | re.MULTILINE,
         )
+        
+        sensitive_names = {
+            "password",
+            "passwd",
+            "secret",
+            "api_key",
+            "apikey",
+            "access_token",
+            "auth_token",
+            "private_key",
+        }
