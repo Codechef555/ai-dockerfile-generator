@@ -123,3 +123,8 @@ def parse_arguments() -> argparse.Namespace:
         help="Output path for the generated Dockerfile.",
     )
 
+    parser.add_argument(
+        "--model",
+        help="Ollama model to use, such as llama3.2:1b.",
+    )
+
