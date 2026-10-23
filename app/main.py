@@ -63,3 +63,7 @@ def save_dockerfile(
         ValueError: If the content is empty or the path is invalid.
         OSError: If the file cannot be written.
     """
+    if not isinstance(content, str) or not content.strip():
+        raise ValueError("Cannot save an empty Dockerfile.")
+
+    destination = Path(output_path).expanduser()
