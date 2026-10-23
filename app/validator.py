@@ -54,7 +54,7 @@ class DockerfileValidator:
             for line in lines
             if line.strip() and not line.lstrip().startswith("#")
         ]
-        
+
         if not meaningful_lines:
             errors.append("Dockerfile contains no executable instructions.")
             return ValidationResult(
@@ -62,4 +62,12 @@ class DockerfileValidator:
                 errors=errors,
                 warnings=warnings,
                 passed_checks=passed_checks,
+            )
+            
+        # Check for a valid base image instruction.
+        if self.FROM_PATTERN.search(dockerfile):
+            passed_checks.append("Base image instruction (FROM) found.")
+        else:
+            errors.append(
+                "Missing or invalid FROM instruction specifying a base image."
             )
