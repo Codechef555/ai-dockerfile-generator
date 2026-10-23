@@ -246,3 +246,38 @@ def main() -> int:
         )
 
         return 0
+    except KeyboardInterrupt:
+        console.print("\n[yellow]Operation cancelled by user.[/yellow]")
+        return 130
+
+    except OllamaClientError as exc:
+        console.print(
+            f"\n[bold red]Ollama Error:[/bold red] {exc}"
+        )
+        console.print(
+            "[dim]Check that Ollama is installed and running, "
+            "and that the configured model has been downloaded.[/dim]"
+        )
+        return 1
+
+    except (ValueError, FileNotFoundError) as exc:
+        console.print(
+            f"\n[bold red]Application Error:[/bold red] {exc}"
+        )
+        return 1
+
+    except OSError as exc:
+        console.print(
+            f"\n[bold red]File Error:[/bold red] {exc}"
+        )
+        return 1
+
+    except Exception as exc:
+        console.print(
+            f"\n[bold red]Unexpected Error:[/bold red] {exc}"
+        )
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
