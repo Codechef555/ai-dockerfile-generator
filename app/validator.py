@@ -24,4 +24,22 @@ class DockerfileValidator:
         re.IGNORECASE | re.MULTILINE,
     )
     def validate(self, dockerfile: str) -> ValidationResult:
-        
+        """Validate Dockerfile content.
+
+        Args:
+            dockerfile: Dockerfile content to inspect.
+
+        Returns:
+            A ValidationResult containing errors, warnings, and passed checks.
+
+        Raises:
+            ValueError: If the Dockerfile content is not a string.
+        """
+        if not isinstance(dockerfile, str):
+            raise ValueError("Dockerfile content must be a string.")
+
+        if not dockerfile.strip():
+            return ValidationResult(
+                is_valid=False,
+                errors=["Dockerfile content cannot be empty."],
+            )
