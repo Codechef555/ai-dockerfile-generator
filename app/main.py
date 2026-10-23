@@ -118,3 +118,8 @@ def parse_arguments() -> argparse.Namespace:
         help="Description of the application to containerize.",
     )
 
+    parser.add_argument(
+        "--output",
+        help="Output path for the generated Dockerfile.",
+    )
+
