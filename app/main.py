@@ -93,3 +93,5 @@ def save_dockerfile(
         f"\n[bold green]Dockerfile saved successfully:[/bold green]\n"
         f"{destination}"
     )
+
+    return destination
