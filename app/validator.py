@@ -11,4 +11,11 @@ class ValidationResult:
     passed_checks: list[str] = field(default_factory=list)
 
 class DockerfileValidator:
-    
+    """Perform basic static validation of Dockerfile content."""
+    # Instructions commonly used in Dockerfiles.
+    INSTRUCTION_PATTERN = re.compile(
+        r"^\s*(FROM|RUN|CMD|LABEL|EXPOSE|ENV|ADD|COPY|"
+        r"ENTRYPOINT|VOLUME|USER|WORKDIR|ARG|SHELL|"
+        r"HEALTHCHECK|STOPSIGNAL|ONBUILD)\s+",
+        re.IGNORECASE,
+    )
