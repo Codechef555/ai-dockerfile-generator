@@ -137,3 +137,26 @@ class DockerfileValidator:
                 "No USER instruction found. The container may run as root "
                 "unless the base image specifies another user."
             )
+        # Flag common risky shell execution patterns.
+        unsafe_patterns = {
+            r"\bcurl\b[^\n|]*\|\s*(?:sudo\s+)?(?:ba)?sh\b":
+                "Downloading and executing a script directly with curl "
+                "can be unsafe.",
+            r"\bwget\b[^\n|]*\|\s*(?:sudo\s+)?(?:ba)?sh\b":
+                "Downloading and executing a script directly with wget "
+                "can be unsafe.",
+            r"\bchmod\s+(?:-R\s+)?777\b":
+                "chmod 777 grants broad permissions. Use more restrictive "
+                "permissions where possible.",
+            r"^\s*RUN\s+.*\bsudo\b":
+                "sudo inside a Docker build is often unnecessary and "
+                "may indicate an avoidable privilege escalation.",
+        }
+
+        for pattern, message in unsafe_patterns.items():
+            if re.search(
+                pattern,
+                dockerfile,
+                re.IGNORECASE | re.MULTILINE,
+            ):
+                warnings.append(message)
