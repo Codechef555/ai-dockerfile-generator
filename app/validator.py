@@ -98,3 +98,11 @@ class DockerfileValidator:
                 "A base image uses the 'latest' tag. "
                 "Consider pinning a specific version for reproducibility."
             )
+        # Check whether files are copied into the image.
+        if re.search(r"^\s*(COPY|ADD)\s+", dockerfile, re.IGNORECASE | re.MULTILINE):
+            passed_checks.append("COPY or ADD instruction found.")
+        else:
+            warnings.append(
+                "No COPY or ADD instruction found. "
+                "Verify whether application files need to be copied."
+            )
