@@ -84,3 +84,7 @@ def save_dockerfile(
         ):
             console.print("[yellow]Save cancelled.[/yellow]")
             return destination
+    
+    destination = destination.resolve()
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(content.rstrip() + "\n", encoding="utf-8")
