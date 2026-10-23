@@ -94,4 +94,15 @@ def save_dockerfile(
         f"{destination}"
     )
 
-    return destination
+def parse_arguments() -> argparse.Namespace:
+    """Parse command-line arguments.
+
+    Returns:
+        Parsed command-line arguments.
+    """
+    parser = argparse.ArgumentParser(
+        description=(
+            "Generate and validate Dockerfiles using a locally running "
+            "Ollama model."
+        )
+    )
