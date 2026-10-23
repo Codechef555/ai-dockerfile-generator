@@ -13,3 +13,5 @@ PRODUCTS = [
     {"id": 3, "name": "Mouse", "price": 1200},
     {"id": 4, "name": "Monitor", "price": 18000},
 ]
+
+@app.get("/")
