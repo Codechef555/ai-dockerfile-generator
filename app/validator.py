@@ -46,3 +46,5 @@ class DockerfileValidator:
         errors: list[str] = []
         warnings: list[str] = []
         passed_checks: list[str] = []
+
+        lines = dockerfile.splitlines()
