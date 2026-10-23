@@ -194,3 +194,22 @@ class DockerfileValidator:
                     f"'{match.group(1)}'. Use a safer secrets-management "
                     "approach instead of embedding credentials."
                 )
+        # A HEALTHCHECK is useful for many services but not every container.
+        if re.search(
+            r"^\s*HEALTHCHECK\s+",
+            dockerfile,
+            re.IGNORECASE | re.MULTILINE,
+        ):
+            passed_checks.append("HEALTHCHECK instruction found.")
+        else:
+            warnings.append(
+                "No HEALTHCHECK instruction found. "
+                "Consider adding one if container health monitoring is needed."
+            )
+
+        return ValidationResult(
+            is_valid=not errors,
+            errors=errors,
+            warnings=warnings,
+            passed_checks=passed_checks,
+        )
