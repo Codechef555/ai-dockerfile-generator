@@ -192,6 +192,13 @@ def main() -> int:
                 language=language,
                 project_description=description,
             )
-            
-        console.print("\n[bold green]Generated Dockerfile[/bold green]")
 
+        console.print("\n[bold green]Generated Dockerfile[/bold green]")
+        console.print(
+            Syntax(
+                dockerfile_content,
+                "dockerfile",
+                theme="monokai",
+                line_numbers=True,
+            )
+        )
