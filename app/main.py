@@ -50,3 +50,16 @@ def save_dockerfile(
     content: str,
     output_path: str | Path,
 ) -> Path:
+    """Save Dockerfile content to disk.
+
+    Args:
+        content: Generated Dockerfile content.
+        output_path: Destination file path.
+
+    Returns:
+        The resolved path of the saved Dockerfile.
+
+    Raises:
+        ValueError: If the content is empty or the path is invalid.
+        OSError: If the file cannot be written.
+    """
