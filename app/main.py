@@ -17,4 +17,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "generated"
 
 def display_validation_result(result: ValidationResult) -> None:
-    
+    """Display Dockerfile validation results in the terminal.
+
+    Args:
+        result: Result returned by DockerfileValidator.
+    """
