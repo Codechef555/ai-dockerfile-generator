@@ -179,3 +179,18 @@ class DockerfileValidator:
             "auth_token",
             "private_key",
         }
+
+        for match in secret_pattern.finditer(dockerfile):
+            variable_name = match.group(1).lower()
+            variable_value = match.group(2).strip()
+
+            if (
+                any(name in variable_name for name in sensitive_names)
+                and variable_value
+                and variable_value not in {"", '""', "''"}
+            ):
+                warnings.append(
+                    f"Potential secret in ARG or ENV variable "
+                    f"'{match.group(1)}'. Use a safer secrets-management "
+                    "approach instead of embedding credentials."
+                )
