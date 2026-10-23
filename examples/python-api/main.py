@@ -23,3 +23,8 @@ def home() -> dict:
         "version": "1.0.0",
         "docs": "/docs",
     }
+
+@app.get("/health")
+def health_check() -> dict:
+    """Return the application health status."""
+    return {"status": "healthy"}
