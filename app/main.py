@@ -46,3 +46,7 @@ def display_validation_result(result: ValidationResult) -> None:
         console.print(
             "\n[bold red]Validation status: FAILED[/bold red]"
         )
+def save_dockerfile(
+    content: str,
+    output_path: str | Path,
+) -> Path:
