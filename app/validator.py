@@ -213,3 +213,15 @@ class DockerfileValidator:
             warnings=warnings,
             passed_checks=passed_checks,
         )
+        
+def validate_dockerfile(dockerfile: str) -> ValidationResult:
+    """Convenience function to validate Dockerfile content.
+
+    Args:
+        dockerfile: Dockerfile content to inspect.
+
+    Returns:
+        A ValidationResult containing the validation outcome.
+    """
+    validator = DockerfileValidator()
+    return validator.validate(dockerfile)
