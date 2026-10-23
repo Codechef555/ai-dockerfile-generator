@@ -210,3 +210,11 @@ def main() -> int:
         validation_result = validator.validate(dockerfile_content)
 
         display_validation_result(validation_result)
+       
+        # Do not save invalid output unless the user explicitly chooses to.
+        if not validation_result.is_valid:
+            should_save = Confirm.ask(
+                "\nThe Dockerfile has validation errors. "
+                "Save it anyway for debugging?",
+                default=False,
+            )
