@@ -144,3 +144,23 @@ def main() -> int:
             border_style="cyan",
         )
     )
+    args = parse_arguments()
+    try:
+        # Collect input interactively when arguments are not provided.
+        language = args.language or Prompt.ask(
+            "Select the application language",
+            choices=list(SUPPORTED_LANGUAGES),
+            default="python",
+        )
+
+        description = args.description or Prompt.ask(
+            "Describe your application",
+        )
+
+        if not description.strip():
+            console.print(
+                "[bold red]Error:[/bold red] "
+                "Project description cannot be empty."
+            )
+            return 1
+
