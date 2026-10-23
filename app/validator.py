@@ -19,3 +19,7 @@ class DockerfileValidator:
         r"HEALTHCHECK|STOPSIGNAL|ONBUILD)\s+",
         re.IGNORECASE,
     )
+    FROM_PATTERN = re.compile(
+        r"^\s*FROM\s+(?:--platform=\S+\s+)?\S+",
+        re.IGNORECASE | re.MULTILINE,
+    )
