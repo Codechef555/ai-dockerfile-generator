@@ -9,3 +9,6 @@ class ValidationResult:
     errors: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
     passed_checks: list[str] = field(default_factory=list)
+
+class DockerfileValidator:
+    
