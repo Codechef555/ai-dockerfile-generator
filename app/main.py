@@ -136,4 +136,11 @@ def main() -> int:
     Returns:
         Process exit code: 0 for success, nonzero for failure.
     """
-
+    console.print(
+        Panel(
+            "[bold cyan]Local Dockerfile Generator[/bold cyan]\n"
+            "Generate and validate Dockerfiles using local AI.",
+            title="Welcome",
+            border_style="cyan",
+        )
+    )
