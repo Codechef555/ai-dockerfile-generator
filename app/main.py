@@ -192,4 +192,6 @@ def main() -> int:
                 language=language,
                 project_description=description,
             )
+            
+        console.print("\n[bold green]Generated Dockerfile[/bold green]")
 
