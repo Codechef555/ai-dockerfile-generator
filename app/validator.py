@@ -106,3 +106,12 @@ class DockerfileValidator:
                 "No COPY or ADD instruction found. "
                 "Verify whether application files need to be copied."
             )
+        
+        # Check whether the container specifies a working directory.
+        if re.search(r"^\s*WORKDIR\s+\S+", dockerfile, re.IGNORECASE | re.MULTILINE):
+            passed_checks.append("WORKDIR instruction found.")
+        else:
+            warnings.append(
+                "No WORKDIR instruction found. "
+                "Consider setting an explicit application directory."
+            )
