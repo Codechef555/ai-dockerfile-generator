@@ -218,3 +218,9 @@ def main() -> int:
                 "Save it anyway for debugging?",
                 default=False,
             )
+            if not should_save:
+                console.print(
+                    "[yellow]Dockerfile was not saved. "
+                    "Review the errors and try again.[/yellow]"
+                )
+                return 1
