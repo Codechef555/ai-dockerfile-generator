@@ -127,6 +127,13 @@ def parse_arguments() -> argparse.Namespace:
         "--model",
         help="Ollama model to use, such as llama3.2:1b.",
     )
-    
+
     return parser.parse_args()
+
+def main() -> int:
+    """Run the Dockerfile generation application.
+
+    Returns:
+        Process exit code: 0 for success, nonzero for failure.
+    """
 
