@@ -67,3 +67,9 @@ def save_dockerfile(
         raise ValueError("Cannot save an empty Dockerfile.")
 
     destination = Path(output_path).expanduser()
+
+    if destination.exists() and destination.is_dir():
+        destination = destination / "Dockerfile"
+
+    if not destination.name:
+        raise ValueError("Output path must specify a filename.")
