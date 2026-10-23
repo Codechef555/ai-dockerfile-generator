@@ -106,10 +106,15 @@ def parse_arguments() -> argparse.Namespace:
             "Ollama model."
         )
     )
-    
+
     parser.add_argument(
         "--language",
         choices=SUPPORTED_LANGUAGES,
         help="Application language: python, nodejs, or java.",
+    )
+
+    parser.add_argument(
+        "--description",
+        help="Description of the application to containerize.",
     )
 
