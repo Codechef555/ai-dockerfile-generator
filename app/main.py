@@ -12,3 +12,6 @@ from app.validator import DockerfileValidator, ValidationResult
 
 console = Console()
 SUPPORTED_LANGUAGES = ("python", "nodejs", "java")
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "generated"
