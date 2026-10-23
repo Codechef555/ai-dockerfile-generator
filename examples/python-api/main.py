@@ -28,3 +28,11 @@ def home() -> dict:
 def health_check() -> dict:
     """Return the application health status."""
     return {"status": "healthy"}
+
+@app.get("/products")
+def get_products() -> dict:
+    """Return all available products."""
+    return {
+        "count": len(PRODUCTS),
+        "products": PRODUCTS,
+    }
