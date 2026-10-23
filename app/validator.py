@@ -115,3 +115,25 @@ class DockerfileValidator:
                 "No WORKDIR instruction found. "
                 "Consider setting an explicit application directory."
             )
+        # Check for a non-root USER instruction.
+        user_matches = re.findall(
+            r"^\s*USER\s+(\S+)",
+            dockerfile,
+            re.IGNORECASE | re.MULTILINE,
+        )
+
+        if user_matches:
+            final_user = user_matches[-1].lower()
+
+            if final_user in {"root", "0"}:
+                warnings.append(
+                    "The final USER instruction runs as root. "
+                    "Consider using a non-root user."
+                )
+            else:
+                passed_checks.append("A non-root final USER is specified.")
+        else:
+            warnings.append(
+                "No USER instruction found. The container may run as root "
+                "unless the base image specifies another user."
+            )
