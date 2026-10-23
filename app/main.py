@@ -163,4 +163,7 @@ def main() -> int:
                 "Project description cannot be empty."
             )
             return 1
+         
+        default_output = DEFAULT_OUTPUT_DIR / "Dockerfile"
+        output_path = args.output or str(default_output)
 
