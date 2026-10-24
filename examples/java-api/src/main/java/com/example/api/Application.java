@@ -18,3 +18,6 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 }
+@RestController
+@RequestMapping("/")
+class ApiController{}
