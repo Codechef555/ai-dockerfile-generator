@@ -27,4 +27,16 @@ class ApiController{
         Map.of("id", 3, "name", "Mouse", "price", 1200),
         Map.of("id", 4, "name", "Monitor", "price", 18000)
     );
+    @GetMapping
+    public Map<String, Object> home() {
+        return Map.of(
+            "message", "Java API is running!",
+            "application", "Java API Demo",
+            "version", "1.0.0",
+            "endpoints", List.of(
+                "/health",
+                "/products",
+                "/products/{id}"
+            )
+        );
 }
