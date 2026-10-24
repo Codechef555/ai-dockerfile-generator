@@ -39,4 +39,10 @@ class ApiController{
                 "/products/{id}"
             )
         );
+    }
+    @GetMapping("/health")
+    public Map<String, String> healthCheck() {
+        return Map.of("status", "healthy");
+    }
+
 }
