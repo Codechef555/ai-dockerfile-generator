@@ -12,3 +12,12 @@ const products = [
     { id: 3, name: "Mouse", price: 1200 },
     { id: 4, name: "Monitor", price: 18000 },
 ];
+
+app.get("/", (req, res) => {
+    res.json({
+        message: "Node.js API is running!",
+        application: "Node API Demo",
+        version: "1.0.0",
+        docs: "Available endpoints: /health, /products, /products/:id",
+    });
+});
