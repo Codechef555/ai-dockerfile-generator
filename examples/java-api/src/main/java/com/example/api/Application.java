@@ -51,5 +51,15 @@ class ApiController{
             "products", products
         );
     }
+    @GetMapping("/products/{id}")
+    public Map<String, Object> getProduct(@PathVariable int id) {
+        return products.stream()
+            .filter(product -> product.get("id").equals(id))
+            .findFirst()
+            .orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Product with ID " + id + " was not found."
+            ));
+    }
 
 }
