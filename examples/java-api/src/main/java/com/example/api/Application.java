@@ -20,4 +20,11 @@ public class Application {
 }
 @RestController
 @RequestMapping("/")
-class ApiController{}
+class ApiController{
+    private final List<Map<String, Object>> products = List.of(
+        Map.of("id", 1, "name", "Laptop", "price", 75000),
+        Map.of("id", 2, "name", "Keyboard", "price", 2500),
+        Map.of("id", 3, "name", "Mouse", "price", 1200),
+        Map.of("id", 4, "name", "Monitor", "price", 18000)
+    );
+}
