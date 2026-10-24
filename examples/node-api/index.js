@@ -28,3 +28,11 @@ app.get("/health", (req, res) => {
         status: "healthy",
     });
 });
+
+// Return all products.
+app.get("/products", (req, res) => {
+    res.json({
+        count: products.length,
+        products,
+    });
+});
