@@ -36,3 +36,23 @@ app.get("/products", (req, res) => {
         products,
     });
 });
+
+// Return a product by ID.
+app.get("/products/:id", (req, res) => {
+    const productId = Number(req.params.id);
+
+    if (!Number.isInteger(productId) || productId <= 0) {
+        return res.status(400).json({
+            error: "Product ID must be a positive integer.",
+        });
+    }
+    const product = products.find((item) => item.id === productId);
+
+    if (!product) {
+        return res.status(404).json({
+            error: `Product with ID ${productId} was not found.`,
+        });
+    }
+
+    return res.json(product);
+});
