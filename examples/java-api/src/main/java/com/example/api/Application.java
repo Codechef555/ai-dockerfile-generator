@@ -44,5 +44,12 @@ class ApiController{
     public Map<String, String> healthCheck() {
         return Map.of("status", "healthy");
     }
+    @GetMapping("/products")
+    public Map<String, Object> getProducts() {
+        return Map.of(
+            "count", products.size(),
+            "products", products
+        );
+    }
 
 }
