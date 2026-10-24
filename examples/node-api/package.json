@@ -1,0 +1,12 @@
+{
+  "name": "node-api-demo",
+  "version": "1.0.0",
+  "description": "Sample Node.js API for testing generated Dockerfiles",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "4.21.2"
+  }
+}
