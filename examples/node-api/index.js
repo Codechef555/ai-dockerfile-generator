@@ -56,3 +56,10 @@ app.get("/products/:id", (req, res) => {
 
     return res.json(product);
 });
+
+// Handle unknown routes.
+app.use((req, res) => {
+    res.status(404).json({
+        error: "Route not found.",
+    });
+});
