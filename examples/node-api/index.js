@@ -63,3 +63,8 @@ app.use((req, res) => {
         error: "Route not found.",
     });
 });
+
+// Start the server.
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Node.js API listening on port ${PORT}`);
+});
