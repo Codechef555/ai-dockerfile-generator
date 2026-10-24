@@ -21,3 +21,10 @@ app.get("/", (req, res) => {
         docs: "Available endpoints: /health, /products, /products/:id",
     });
 });
+
+// Health-check endpoint.
+app.get("/health", (req, res) => {
+    res.status(200).json({
+        status: "healthy",
+    });
+});
