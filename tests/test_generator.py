@@ -74,3 +74,4 @@ class TestPromptTemplates:
             ValueError,
             match="Project description cannot be empty",
         ):
+            build_prompt("python", description)
