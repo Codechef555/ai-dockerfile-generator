@@ -23,3 +23,5 @@ def mock_llm_client(mocker):
 def generator(mock_llm_client):
     """Create a generator with a mocked LLM client."""
     return DockerfileGenerator(llm_client=mock_llm_client)
+
+class TestPromptTemplates:
