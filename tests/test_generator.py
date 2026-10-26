@@ -121,3 +121,7 @@ class TestDockerfileGenerator:
         language,
     ):
      """Generation should work for every supported language."""
+     result = generator.generate(
+            language,
+            "A simple REST API.",
+        )
