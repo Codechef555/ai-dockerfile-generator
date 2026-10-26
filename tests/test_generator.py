@@ -138,3 +138,5 @@ class TestDockerfileGenerator:
         )
 
         mock_llm_client.generate.assert_called_once_with("Test prompt")
+
+    def test_generate_removes_markdown_fences(self, mock_llm_client):
