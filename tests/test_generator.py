@@ -173,3 +173,5 @@ class TestDockerfileGenerator:
 
     def test_empty_llm_response_raises_error(self, mock_llm_client):
         """Empty model output should be rejected."""
+        mock_llm_client.generate.return_value = "   "
+        instance = DockerfileGenerator(llm_client=mock_llm_client)
