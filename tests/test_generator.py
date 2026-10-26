@@ -198,3 +198,5 @@ class TestDockerfileGenerator:
             match="Ollama is unavailable",
         ):
             instance.generate("python", "A test application.")
+            
+    def test_clean_output_rejects_non_string(self):
