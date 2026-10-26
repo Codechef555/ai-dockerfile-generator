@@ -156,3 +156,12 @@ class TestDockerfileGenerator:
 
     def test_generate_preserves_valid_dockerfile_content(self, mock_llm_client):
         """Valid Dockerfile instructions should remain unchanged."""
+        dockerfile = (
+            "FROM python:3.11-slim\n"
+            "WORKDIR /app\n"
+            "COPY requirements.txt .\n"
+            "RUN pip install -r requirements.txt\n"
+            'CMD ["python", "main.py"]'
+        )
+        
+        mock_llm_client.generate.return_value = dockerfile
