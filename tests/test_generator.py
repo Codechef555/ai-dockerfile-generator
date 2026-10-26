@@ -52,4 +52,4 @@ class TestPromptTemplates:
         assert "{project_description}" not in prompt
     
     def test_language_is_case_insensitive(self):
-        
+        """Language names should be normalized to lowercase."""
