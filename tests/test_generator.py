@@ -30,3 +30,4 @@ class TestPromptTemplates:
         "language",
         ["python", "nodejs", "java"],
     )
+    def test_load_supported_templates(self, language):
