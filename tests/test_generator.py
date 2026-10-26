@@ -187,4 +187,4 @@ class TestDockerfileGenerator:
             generator.generate("ruby", "A Ruby application.")
     
     def test_llm_error_propagates(self, mock_llm_client):
-        
+        """LLM errors should propagate to the caller."""
