@@ -44,3 +44,4 @@ class TestPromptTemplates:
     )
     def test_build_prompt_includes_project_description(self, language):
         """The generated prompt should contain the supplied description."""
+        description = "A REST API for managing products."
