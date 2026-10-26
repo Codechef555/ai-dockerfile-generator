@@ -124,3 +124,5 @@ class TestDockerfileGenerator:
      result = generator.generate(language, "A simple REST API.",)
      assert result.startswith("FROM python:3.11-slim")
      assert "WORKDIR /app" in result
+     
+     mock_llm_client.generate.assert_called_once()
