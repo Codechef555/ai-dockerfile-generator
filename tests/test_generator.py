@@ -163,5 +163,10 @@ class TestDockerfileGenerator:
             "RUN pip install -r requirements.txt\n"
             'CMD ["python", "main.py"]'
         )
-        
+
         mock_llm_client.generate.return_value = dockerfile
+
+        instance = DockerfileGenerator(llm_client=mock_llm_client)
+        result = instance.generate("python", "A Python API.")
+
+        assert result == dockerfile
