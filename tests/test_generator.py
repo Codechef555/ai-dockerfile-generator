@@ -78,3 +78,8 @@ class TestPromptTemplates:
     
     def test_non_string_description_raises_error(self):
         """Project descriptions must be strings."""
+        with pytest.raises(
+            ValueError,
+            match="Project description cannot be empty",
+        ):
+            build_prompt("python", None)
