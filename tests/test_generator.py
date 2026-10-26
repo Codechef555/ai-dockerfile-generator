@@ -50,3 +50,6 @@ class TestPromptTemplates:
 
         assert description in prompt
         assert "{project_description}" not in prompt
+    
+    def test_language_is_case_insensitive(self):
+        
