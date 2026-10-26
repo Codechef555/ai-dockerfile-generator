@@ -136,3 +136,5 @@ class TestDockerfileGenerator:
             "python",
             "A test application.",
         )
+
+        mock_llm_client.generate.assert_called_once_with("Test prompt")
