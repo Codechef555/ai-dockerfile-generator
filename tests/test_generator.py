@@ -209,4 +209,9 @@ class TestDockerfileGenerator:
 
     def test_clean_output_removes_surrounding_whitespace(self):
         """Leading and trailing whitespace should be removed."""
+        result = DockerfileGenerator._clean_output(
+            "\n  FROM python:3.11-slim  \n"
+        )
+
+        assert result == "FROM python:3.11-slim"
         
