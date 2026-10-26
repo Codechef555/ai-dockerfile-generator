@@ -35,3 +35,4 @@ class TestPromptTemplates:
         template = load_template(language)
 
         assert isinstance(template, str)
+        assert template.strip()
