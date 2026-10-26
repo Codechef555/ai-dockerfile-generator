@@ -8,3 +8,4 @@ from app.prompt_templates import (
 )
 
 @pytest.fixture
+def mock_llm_client(mocker):
