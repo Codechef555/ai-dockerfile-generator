@@ -175,3 +175,8 @@ class TestDockerfileGenerator:
         """Empty model output should be rejected."""
         mock_llm_client.generate.return_value = "   "
         instance = DockerfileGenerator(llm_client=mock_llm_client)
+        with pytest.raises(
+            ValueError,
+            match="empty Dockerfile",
+        ):
+            instance.generate("python", "A test API.")
