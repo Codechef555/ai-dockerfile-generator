@@ -63,3 +63,8 @@ class TestPromptTemplates:
         """Unsupported languages should produce a clear error."""
         with pytest.raises(ValueError, match="Unsupported language"):
             load_template("ruby")
+    
+    @pytest.mark.parametrize(
+        "description",
+        ["", "   ", "\n\t"],
+    )
