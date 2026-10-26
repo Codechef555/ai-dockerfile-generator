@@ -231,6 +231,11 @@ class TestDockerfileGenerator:
             "python",
             "A sample application.",
         )
-        
+
     def test_supported_languages_configuration():
-        
+        """The configured languages should match the project requirements."""
+        assert set(SUPPORTED_LANGUAGES) == {
+        "python",
+        "nodejs",
+        "java",
+    }
