@@ -57,3 +57,4 @@ class TestPromptTemplates:
     
     def test_language_whitespace_is_accepted(self):
         """Leading and trailing whitespace should be ignored."""
+        assert load_template(" python ") == load_template("python")
