@@ -120,3 +120,4 @@ class TestDockerfileGenerator:
         mock_llm_client,
         language,
     ):
+     """Generation should work for every supported language."""
