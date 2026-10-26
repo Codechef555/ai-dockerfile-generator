@@ -10,3 +10,4 @@ from app.prompt_templates import (
 @pytest.fixture
 def mock_llm_client(mocker):
     """Create a mocked LLM client without connecting to Ollama."""
+    client = mocker.Mock()
