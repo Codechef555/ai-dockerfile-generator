@@ -25,3 +25,4 @@ def generator(mock_llm_client):
     return DockerfileGenerator(llm_client=mock_llm_client)
 
 class TestPromptTemplates:
+    """Tests for loading templates and building prompts."""
