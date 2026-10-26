@@ -131,3 +131,8 @@ class TestDockerfileGenerator:
 
         instance = DockerfileGenerator(llm_client=mock_llm_client)
         instance.generate("python", "A test application.")
+
+        build_prompt_mock.assert_called_once_with(
+            "python",
+            "A test application.",
+        )
