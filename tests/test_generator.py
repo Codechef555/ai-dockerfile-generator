@@ -114,15 +114,13 @@ class TestDockerfileGenerator:
         "language",
         ["python", "nodejs", "java"],
     )
-    def test_generate_supported_languages(
-        self,
-        generator,
-        mock_llm_client,
-        language,
-    ):
-     """Generation should work for every supported language."""
-     result = generator.generate(language, "A simple REST API.",)
-     assert result.startswith("FROM python:3.11-slim")
-     assert "WORKDIR /app" in result
-     
-     mock_llm_client.generate.assert_called_once()
+    def test_generate_supported_languages(self, generator, mock_llm_client, language):
+        """Generation should work for every supported language."""
+        result = generator.generate(language, "A simple REST API.",)
+        assert result.startswith("FROM python:3.11-slim")
+        assert "WORKDIR /app" in result
+
+        mock_llm_client.generate.assert_called_once()
+
+    def test_generate_builds_prompt(self, mock_llm_client, mocker):
+        """The generator should pass a built prompt to the LLM."""
