@@ -77,3 +77,4 @@ class TestPromptTemplates:
             build_prompt("python", description)
     
     def test_non_string_description_raises_error(self):
+        """Project descriptions must be strings."""
