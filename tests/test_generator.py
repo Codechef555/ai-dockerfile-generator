@@ -11,4 +11,9 @@ from app.prompt_templates import (
 def mock_llm_client(mocker):
     """Create a mocked LLM client without connecting to Ollama."""
     client = mocker.Mock()
-    client.generate.return_value = ()
+    client.generate.return_value = (
+        "FROM python:3.11-slim\n"
+        "WORKDIR /app\n"
+        "COPY . .\n"
+        'CMD ["python", "main.py"]'
+    )
