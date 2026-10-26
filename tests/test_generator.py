@@ -68,3 +68,4 @@ class TestPromptTemplates:
         "description",
         ["", "   ", "\n\t"],
     )
+    def test_empty_description_raises_error(self, description):
