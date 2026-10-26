@@ -109,4 +109,8 @@ class TestDockerfileGenerator:
         """The supplied LLM client should be stored."""
         instance = DockerfileGenerator(llm_client=mock_llm_client)
         assert instance.llm_client is mock_llm_client
-        
+
+    @pytest.mark.parametrize(
+        "language",
+        ["python", "nodejs", "java"],
+    )
