@@ -42,3 +42,4 @@ class TestPromptTemplates:
         "language",
         ["python", "nodejs", "java"],
     )
+    def test_build_prompt_includes_project_description(self, language):
