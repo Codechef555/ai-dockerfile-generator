@@ -61,3 +61,5 @@ class TestPromptTemplates:
     
     def test_unsupported_language_raises_error(self):
         """Unsupported languages should produce a clear error."""
+        with pytest.raises(ValueError, match="Unsupported language"):
+            load_template("ruby")
