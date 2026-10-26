@@ -86,3 +86,17 @@ class TestPromptTemplates:
     
     def test_missing_template_file_raises_error(self, mocker):
         """A missing template should raise FileNotFoundError."""
+        mocker.patch(
+            "app.prompt_templates.TEMPLATES_DIR",
+            mocker.Mock(
+                __truediv__=mocker.Mock(
+                    return_value=mocker.Mock(
+                        read_text=mocker.Mock(
+                            side_effect=FileNotFoundError(
+                                "Template not found"
+                            )
+                        )
+                    )
+                )
+            ),
+        )
