@@ -180,5 +180,6 @@ class TestDockerfileGenerator:
             match="empty Dockerfile",
         ):
             instance.generate("python", "A test API.")
-            
+
     def test_unsupported_language_raises_error(self, generator):
+        """Unsupported languages should not reach the LLM."""
