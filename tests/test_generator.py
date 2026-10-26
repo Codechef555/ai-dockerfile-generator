@@ -191,3 +191,10 @@ class TestDockerfileGenerator:
         mock_llm_client.generate.side_effect = OllamaClientError(
             "Ollama is unavailable."
         )
+        instance = DockerfileGenerator(llm_client=mock_llm_client)
+
+        with pytest.raises(
+            OllamaClientError,
+            match="Ollama is unavailable",
+        ):
+            instance.generate("python", "A test application.")
