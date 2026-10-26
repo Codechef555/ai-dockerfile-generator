@@ -85,3 +85,4 @@ class TestPromptTemplates:
             build_prompt("python", None)
     
     def test_missing_template_file_raises_error(self, mocker):
+        """A missing template should raise FileNotFoundError."""
