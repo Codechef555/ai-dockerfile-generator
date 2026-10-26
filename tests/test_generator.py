@@ -221,4 +221,14 @@ class TestDockerfileGenerator:
             "app.generator.DockerfileGenerator.generate",
             return_value="FROM python:3.11-slim",
         )
+        result = generate_dockerfile(
+            "python",
+            "A sample application.",
+        )
+
+        assert result == "FROM python:3.11-slim"
+        generate_mock.assert_called_once_with(
+            "python",
+            "A sample application.",
+        )
         
