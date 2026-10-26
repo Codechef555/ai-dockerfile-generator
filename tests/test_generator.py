@@ -217,4 +217,8 @@ class TestDockerfileGenerator:
 
     def test_convenience_function(self, mocker):
         """The convenience function should delegate to the generator."""
+        generate_mock = mocker.patch(
+            "app.generator.DockerfileGenerator.generate",
+            return_value="FROM python:3.11-slim",
+        )
         
