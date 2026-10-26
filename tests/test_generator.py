@@ -70,4 +70,7 @@ class TestPromptTemplates:
     )
     def test_empty_description_raises_error(self, description):
         """Empty project descriptions should be rejected."""
-        with pytest.raises()
+        with pytest.raises(
+            ValueError,
+            match="Project description cannot be empty",
+        ):
