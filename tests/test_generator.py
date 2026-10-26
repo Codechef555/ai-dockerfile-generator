@@ -100,3 +100,5 @@ class TestPromptTemplates:
                 )
             ),
         )
+        with pytest.raises(FileNotFoundError):
+            load_template("python")
