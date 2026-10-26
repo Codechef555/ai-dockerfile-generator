@@ -32,4 +32,4 @@ class TestPromptTemplates:
     )
     def test_load_supported_templates(self, language):
         """Every supported language should have a readable template."""
-        
+        template = load_template(language)
