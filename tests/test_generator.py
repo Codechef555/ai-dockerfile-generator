@@ -153,5 +153,6 @@ class TestDockerfileGenerator:
 
         assert result.startswith("FROM")
         assert "```" not in result
-        
-    def test_generate_preserves_valid_dockerfile_content
+
+    def test_generate_preserves_valid_dockerfile_content(self, mock_llm_client):
+        """Valid Dockerfile instructions should remain unchanged."""
