@@ -130,3 +130,4 @@ class TestDockerfileGenerator:
         )
 
         instance = DockerfileGenerator(llm_client=mock_llm_client)
+        instance.generate("python", "A test application.")
