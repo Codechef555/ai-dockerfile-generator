@@ -54,3 +54,5 @@ class TestPromptTemplates:
     def test_language_is_case_insensitive(self):
         """Language names should be normalized to lowercase."""
         assert load_template("PYTHON") == load_template("python")
+    
+    def test_language_whitespace_is_accepted(self):
