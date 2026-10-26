@@ -60,3 +60,4 @@ class TestPromptTemplates:
         assert load_template(" python ") == load_template("python")
     
     def test_unsupported_language_raises_error(self):
+        """Unsupported languages should produce a clear error."""
