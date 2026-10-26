@@ -47,3 +47,6 @@ class TestPromptTemplates:
         description = "A REST API for managing products."
 
         prompt = build_prompt(language, description)
+
+        assert description in prompt
+        assert "{project_description}" not in prompt
