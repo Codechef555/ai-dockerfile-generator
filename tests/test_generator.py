@@ -124,3 +124,7 @@ class TestDockerfileGenerator:
 
     def test_generate_builds_prompt(self, mock_llm_client, mocker):
         """The generator should pass a built prompt to the LLM."""
+        build_prompt_mock = mocker.patch(
+            "app.generator.build_prompt",
+            return_value="Test prompt",
+        )
