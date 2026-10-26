@@ -232,3 +232,5 @@ class TestDockerfileGenerator:
             "A sample application.",
         )
         
+    def test_supported_languages_configuration():
+        
