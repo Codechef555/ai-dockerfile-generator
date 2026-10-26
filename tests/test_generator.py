@@ -17,3 +17,6 @@ def mock_llm_client(mocker):
         "COPY . .\n"
         'CMD ["python", "main.py"]'
     )
+    return client
+
+@pytest.fixture
