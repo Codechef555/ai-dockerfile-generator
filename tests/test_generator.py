@@ -153,3 +153,5 @@ class TestDockerfileGenerator:
 
         assert result.startswith("FROM")
         assert "```" not in result
+        
+    def test_generate_preserves_valid_dockerfile_content
