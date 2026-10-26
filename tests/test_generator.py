@@ -188,3 +188,6 @@ class TestDockerfileGenerator:
     
     def test_llm_error_propagates(self, mock_llm_client):
         """LLM errors should propagate to the caller."""
+        mock_llm_client.generate.side_effect = OllamaClientError(
+            "Ollama is unavailable."
+        )
