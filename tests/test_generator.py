@@ -147,3 +147,6 @@ class TestDockerfileGenerator:
             'CMD ["python", "main.py"]\n'
             "```"
         )
+        
+        instance = DockerfileGenerator(llm_client=mock_llm_client)
+        result = instance.generate("python", "A simple API.")
