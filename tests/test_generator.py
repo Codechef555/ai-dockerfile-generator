@@ -170,5 +170,6 @@ class TestDockerfileGenerator:
         result = instance.generate("python", "A Python API.")
 
         assert result == dockerfile
-        
+
     def test_empty_llm_response_raises_error(self, mock_llm_client):
+        """Empty model output should be rejected."""
