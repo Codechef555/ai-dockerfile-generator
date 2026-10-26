@@ -20,3 +20,4 @@ def mock_llm_client(mocker):
     return client
 
 @pytest.fixture
+def generator(mock_llm_client):
