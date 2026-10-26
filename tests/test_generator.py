@@ -37,3 +37,8 @@ class TestPromptTemplates:
         assert isinstance(template, str)
         assert template.strip()
         assert "{project_description}" in template
+    
+    @pytest.mark.parametrize(
+        "language",
+        ["python", "nodejs", "java"],
+    )
