@@ -6,3 +6,5 @@ from app.prompt_templates import (
     build_prompt,
     load_template,
 )
+
+@pytest.fixture
