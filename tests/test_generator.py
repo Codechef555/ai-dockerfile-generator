@@ -75,3 +75,5 @@ class TestPromptTemplates:
             match="Project description cannot be empty",
         ):
             build_prompt("python", description)
+    
+    def test_non_string_description_raises_error(self):
