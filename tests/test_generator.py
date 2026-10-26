@@ -102,5 +102,7 @@ class TestPromptTemplates:
         )
         with pytest.raises(FileNotFoundError):
             load_template("python")
-            
+
 class TestDockerfileGenerator:
+    """Tests for Dockerfile generation."""
+    def test_generator_initialization(self, mock_llm_client):
