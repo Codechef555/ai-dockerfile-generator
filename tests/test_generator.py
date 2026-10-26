@@ -114,4 +114,9 @@ class TestDockerfileGenerator:
         "language",
         ["python", "nodejs", "java"],
     )
-    def test_generate_supported_languages():
+    def test_generate_supported_languages(
+        self,
+        generator,
+        mock_llm_client,
+        language,
+    ):
