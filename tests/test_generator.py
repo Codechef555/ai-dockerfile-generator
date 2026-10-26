@@ -114,3 +114,4 @@ class TestDockerfileGenerator:
         "language",
         ["python", "nodejs", "java"],
     )
+    def test_generate_supported_languages():
