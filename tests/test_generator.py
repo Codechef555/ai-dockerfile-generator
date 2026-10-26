@@ -214,4 +214,7 @@ class TestDockerfileGenerator:
         )
 
         assert result == "FROM python:3.11-slim"
+
+    def test_convenience_function(self, mocker):
+        """The convenience function should delegate to the generator."""
         
