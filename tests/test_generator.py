@@ -206,6 +206,7 @@ class TestDockerfileGenerator:
             match="LLM response must be a string",
         ):
            DockerfileGenerator._clean_output(None)
-           
+
     def test_clean_output_removes_surrounding_whitespace(self):
+        """Leading and trailing whitespace should be removed."""
         
