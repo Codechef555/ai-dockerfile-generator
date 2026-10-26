@@ -141,3 +141,9 @@ class TestDockerfileGenerator:
 
     def test_generate_removes_markdown_fences(self, mock_llm_client):
         """Markdown fences should be removed from model output."""
+        mock_llm_client.generate.return_value = (
+            "```dockerfile\n"
+            "FROM python:3.11-slim\n"
+            'CMD ["python", "main.py"]\n'
+            "```"
+        )
