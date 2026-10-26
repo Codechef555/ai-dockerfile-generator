@@ -123,4 +123,4 @@ class TestDockerfileGenerator:
      """Generation should work for every supported language."""
      result = generator.generate(language, "A simple REST API.",)
      assert result.startswith("FROM python:3.11-slim")
-     
+     assert "WORKDIR /app" in result
