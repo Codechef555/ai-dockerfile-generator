@@ -108,3 +108,5 @@ class TestDockerfileGenerator:
     def test_generator_initialization(self, mock_llm_client):
         """The supplied LLM client should be stored."""
         instance = DockerfileGenerator(llm_client=mock_llm_client)
+        assert instance.llm_client is mock_llm_client
+        
