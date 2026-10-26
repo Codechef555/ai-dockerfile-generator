@@ -201,3 +201,9 @@ class TestDockerfileGenerator:
 
     def test_clean_output_rejects_non_string(self):
         """The output cleaner should reject non-string responses."""
+        with pytest.raises(
+            ValueError,
+            match="LLM response must be a string",
+        ):
+           DockerfileGenerator._clean_output(None)
+        
