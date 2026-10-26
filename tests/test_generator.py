@@ -183,3 +183,5 @@ class TestDockerfileGenerator:
 
     def test_unsupported_language_raises_error(self, generator):
         """Unsupported languages should not reach the LLM."""
+        with pytest.raises(ValueError, match="Unsupported language"):
+            generator.generate("ruby", "A Ruby application.")
