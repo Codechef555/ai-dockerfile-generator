@@ -128,3 +128,5 @@ class TestDockerfileGenerator:
             "app.generator.build_prompt",
             return_value="Test prompt",
         )
+
+        instance = DockerfileGenerator(llm_client=mock_llm_client)
