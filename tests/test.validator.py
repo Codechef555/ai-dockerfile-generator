@@ -33,4 +33,7 @@ class TestDockerfileValidator:
     
     def test_empty_dockerfile_fails(self, validator):
         """An empty Dockerfile should fail validation."""
-        
+        result = validator.validate("")
+
+        assert result.is_valid is False
+        assert "Dockerfile content cannot be empty." in result.errors
