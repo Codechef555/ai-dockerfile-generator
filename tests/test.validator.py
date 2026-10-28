@@ -30,3 +30,6 @@ class TestDockerfileValidator:
         assert result.is_valid is True
         assert result.errors == []
         assert result.passed_checks
+    
+    def test_empty_dockerfile_fails(self, validator):
+        
