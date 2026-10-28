@@ -45,3 +45,6 @@ class TestDockerfileValidator:
 
         assert result.is_valid is False
         assert result.errors
+
+    def test_non_string_content_raises_error(self, validator):
+        """Non-string content should raise ValueError."""   
