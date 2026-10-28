@@ -54,3 +54,9 @@ class TestDockerfileValidator:
         ):
             validator.validate(None)
             
+    def test_missing_from_instruction_fails(self, validator):
+        """A Dockerfile without FROM should fail validation."""
+        result = validator.validate(
+            "WORKDIR /app\n"
+            'CMD ["python", "main.py"]\n'
+        )        
