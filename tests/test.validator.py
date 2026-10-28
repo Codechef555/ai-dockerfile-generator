@@ -53,10 +53,12 @@ class TestDockerfileValidator:
             match="Dockerfile content must be a string",
         ):
             validator.validate(None)
-            
+
     def test_missing_from_instruction_fails(self, validator):
         """A Dockerfile without FROM should fail validation."""
         result = validator.validate(
             "WORKDIR /app\n"
             'CMD ["python", "main.py"]\n'
-        )        
+        )
+        assert result.is_valid is False
+        assert any("FROM" in error for error in result.errors)        
