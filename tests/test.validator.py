@@ -62,3 +62,12 @@ class TestDockerfileValidator:
         )
         assert result.is_valid is False
         assert any("FROM" in error for error in result.errors)        
+    
+    def test_missing_recognizable_instructions_fails(self, validator):
+        """Content without recognizable Docker instructions should fail."""
+        result = validator.validate(
+            "This is not a Dockerfile.\n"
+        )
+
+        assert result.is_valid is False
+        assert result.errors
