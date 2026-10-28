@@ -25,4 +25,7 @@ class TestDockerfileValidator:
     def test_valid_dockerfile_passes(self, validator, valid_dockerfile):
         """A structurally valid Dockerfile should pass validation."""
         result = validator.validate(valid_dockerfile)
+
+        assert isinstance(result, ValidationResult)
         
+
