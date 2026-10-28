@@ -18,3 +18,6 @@ def valid_dockerfile():
         "USER 10001\n"
         'CMD ["python", "main.py"]\n'
     )
+
+class TestDockerfileValidator:
+    """Tests for the DockerfileValidator class."""
