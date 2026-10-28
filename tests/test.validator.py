@@ -27,5 +27,5 @@ class TestDockerfileValidator:
         result = validator.validate(valid_dockerfile)
 
         assert isinstance(result, ValidationResult)
-        
+        assert result.is_valid is True
 
