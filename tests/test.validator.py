@@ -28,4 +28,4 @@ class TestDockerfileValidator:
 
         assert isinstance(result, ValidationResult)
         assert result.is_valid is True
-
+        assert result.errors == []
