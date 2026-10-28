@@ -81,3 +81,15 @@ class TestDockerfileValidator:
 
         assert result.is_valid is False
         assert result.errors
+        
+    def test_markdown_fences_are_reported(self, validator):
+        """Markdown fences should be reported as a validation error."""
+        result = validator.validate(
+            "```dockerfile\n"
+            "FROM python:3.11-slim\n"
+            'CMD ["python", "main.py"]\n'
+            "```"
+        )
+
+        assert result.is_valid is False
+        assert any("Markdown code fences" in error for error in result.errors)
