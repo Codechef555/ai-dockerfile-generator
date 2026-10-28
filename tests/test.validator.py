@@ -5,3 +5,7 @@ from app.validator import DockerfileValidator, ValidationResult, validate_docker
 def validator():
     """Create a Dockerfile validator instance."""
     return DockerfileValidator()
+
+@pytest.fixture
+def valid_dockerfile():
+    
