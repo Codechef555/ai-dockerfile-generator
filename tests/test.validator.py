@@ -48,3 +48,7 @@ class TestDockerfileValidator:
 
     def test_non_string_content_raises_error(self, validator):
         """Non-string content should raise ValueError."""   
+        with pytest.raises(
+            ValueError,
+            match="Dockerfile content must be a string",
+        ):
