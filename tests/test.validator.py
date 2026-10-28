@@ -37,3 +37,6 @@ class TestDockerfileValidator:
 
         assert result.is_valid is False
         assert "Dockerfile content cannot be empty." in result.errors
+    
+    @pytest.mark.parametrize("content", ["   ", "\n", "\t\n  "])
+    def test_whitespace_only_dockerfile_fails(self, validator, content):
