@@ -71,3 +71,13 @@ class TestDockerfileValidator:
 
         assert result.is_valid is False
         assert result.errors
+    
+    def test_comments_only_dockerfile_fails(self, validator):
+        """A Dockerfile containing only comments should fail."""
+        result = validator.validate(
+            "# Sample Dockerfile\n"
+            "# No instructions yet\n"
+        )
+
+        assert result.is_valid is False
+        assert result.errors
