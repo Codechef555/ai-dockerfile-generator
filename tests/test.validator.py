@@ -40,3 +40,8 @@ class TestDockerfileValidator:
     
     @pytest.mark.parametrize("content", ["   ", "\n", "\t\n  "])
     def test_whitespace_only_dockerfile_fails(self, validator, content):
+        """Whitespace-only content should be rejected."""
+        result = validator.validate(content)
+
+        assert result.is_valid is False
+        assert result.errors
