@@ -23,4 +23,5 @@ class TestDockerfileValidator:
     """Tests for the DockerfileValidator class."""
 
     def test_valid_dockerfile_passes(self, validator, valid_dockerfile):
+        """A structurally valid Dockerfile should pass validation."""
         
