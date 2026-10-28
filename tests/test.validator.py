@@ -52,3 +52,5 @@ class TestDockerfileValidator:
             ValueError,
             match="Dockerfile content must be a string",
         ):
+            validator.validate(None)
+            
