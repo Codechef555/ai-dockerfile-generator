@@ -195,4 +195,12 @@ class TestDockerfileValidator:
         )
         assert any("sudo" in warning for warning in result.warnings)
     
-    @pytest.mark.parametrize
+    @pytest.mark.parametrize(
+        "instruction",
+        [
+            "ENV API_KEY=supersecret123",
+            "ENV PASSWORD=mysecretpassword",
+            "ARG ACCESS_TOKEN=abc123",
+            "ENV PRIVATE_KEY=my-private-key",
+        ],
+    )
