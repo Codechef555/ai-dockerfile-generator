@@ -246,3 +246,15 @@ class TestDockerfileValidator:
         )
         assert result.is_valid is True
 
+    def test_comments_and_blank_lines_are_allowed(self, validator):
+        """Comments and blank lines should not invalidate a Dockerfile."""
+        result = validator.validate(
+            "# Use a lightweight Python image\n"
+            "\n"
+            "FROM python:3.11-slim\n"
+            "# Set the application directory\n"
+            "WORKDIR /app\n"
+            "COPY . .\n"
+            'CMD ["python", "main.py"]\n'
+        )
+
