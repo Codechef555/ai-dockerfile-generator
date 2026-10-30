@@ -185,4 +185,12 @@ class TestDockerfileValidator:
             'CMD ["python", "main.py"]\n'
         )
         assert any("chmod 777" in warning for warning in result.warnings)
+    
+    def test_sudo_produces_warning(self, validator):
+        """Use of sudo in a RUN instruction should be flagged."""
+        result = validator.validate(
+            "FROM ubuntu:24.04\n"
+            "RUN sudo apt-get update\n"
+            'CMD ["echo", "hello"]\n'
+        )
 
