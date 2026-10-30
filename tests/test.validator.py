@@ -257,4 +257,5 @@ class TestDockerfileValidator:
             "COPY . .\n"
             'CMD ["python", "main.py"]\n'
         )
+        assert result.is_valid is True
 
