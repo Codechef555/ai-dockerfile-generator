@@ -93,3 +93,12 @@ class TestDockerfileValidator:
 
         assert result.is_valid is False
         assert any("Markdown code fences" in error for error in result.errors)
+    
+    def test_latest_tag_produces_warning(self, validator):
+        """Using the latest image tag should produce a warning."""
+        result = validator.validate(
+            "FROM python:latest\n"
+            "WORKDIR /app\n"
+            "COPY . .\n"
+            'CMD ["python", "main.py"]\n'
+        )
