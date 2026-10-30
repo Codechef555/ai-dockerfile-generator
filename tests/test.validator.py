@@ -232,4 +232,16 @@ class TestDockerfileValidator:
             'CMD ["python", "main.py"]\n'
         )
         assert any("No HEALTHCHECK" in warning for warning in result.warnings)
+    
+    def test_multiple_from_instructions_are_allowed(self, validator):
+        """Multi-stage Dockerfiles should be accepted."""
+        result = validator.validate(
+            "FROM python:3.11-slim AS builder\n"
+            "WORKDIR /app\n"
+            "COPY requirements.txt .\n"
+            "RUN pip install --prefix=/install -r requirements.txt\n"
+            "FROM python:3.11-slim\n"
+            "COPY --from=builder /install /usr/local\n"
+            'CMD ["python", "main.py"]\n'
+        )
 
