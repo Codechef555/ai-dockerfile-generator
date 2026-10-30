@@ -258,4 +258,11 @@ class TestDockerfileValidator:
             'CMD ["python", "main.py"]\n'
         )
         assert result.is_valid is True
+        
+    def test_convenience_function(self, valid_dockerfile):
+        """The convenience function should return a validation result."""
+        result = validate_dockerfile(valid_dockerfile)
+
+        assert isinstance(result, ValidationResult)
+        assert result.is_valid is True
 
