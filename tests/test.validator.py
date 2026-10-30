@@ -147,3 +147,13 @@ class TestDockerfileValidator:
         )
         assert result.is_valid is True
         assert any("runs as root" in warning for warning in result.warnings)
+    
+    def test_non_root_user_passes_check(self, validator):
+        """A non-root USER instruction should pass the user check."""
+        result = validator.validate(
+            "FROM python:3.11-slim\n"
+            "WORKDIR /app\n"
+            "COPY . .\n"
+            "USER 10001\n"
+            'CMD ["python", "main.py"]\n'
+        )
