@@ -221,3 +221,5 @@ class TestDockerfileValidator:
             "HEALTHCHECK CMD python -c \"print('healthy')\"\n"
             'CMD ["python", "main.py"]\n'
         )
+        assert any("HEALTHCHECK" in check for check in result.passed_checks)
+        
