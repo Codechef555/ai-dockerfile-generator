@@ -145,3 +145,5 @@ class TestDockerfileValidator:
             "USER root\n"
             'CMD ["python", "main.py"]\n'
         )
+        assert result.is_valid is True
+        assert any("runs as root" in warning for warning in result.warnings)
