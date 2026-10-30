@@ -124,3 +124,12 @@ class TestDockerfileValidator:
         )
         assert result.is_valid is True
         assert any("No WORKDIR" in warning for warning in result.warnings)
+    
+    def test_missing_user_produces_warning(self, validator):
+        """Missing USER should produce a warning."""
+        result = validator.validate(
+            "FROM python:3.11-slim\n"
+            "WORKDIR /app\n"
+            "COPY . .\n"
+            'CMD ["python", "main.py"]\n'
+        )
