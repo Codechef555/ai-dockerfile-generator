@@ -135,3 +135,13 @@ class TestDockerfileValidator:
         )
         assert result.is_valid is True
         assert any("No USER instruction" in warning for warning in result.warnings)
+    
+    def test_root_user_produces_warning(self, validator):
+        """An explicit root user should produce a warning."""
+        result = validator.validate(
+            "FROM python:3.11-slim\n"
+            "WORKDIR /app\n"
+            "COPY . .\n"
+            "USER root\n"
+            'CMD ["python", "main.py"]\n'
+        )
