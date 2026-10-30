@@ -166,4 +166,5 @@ class TestDockerfileValidator:
             "RUN curl https://example.com/install.sh | sh\n"
             'CMD ["python", "main.py"]\n'
         )
+        assert any("curl" in warning for warning in result.warnings)
 
