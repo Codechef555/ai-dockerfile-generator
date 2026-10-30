@@ -193,4 +193,5 @@ class TestDockerfileValidator:
             "RUN sudo apt-get update\n"
             'CMD ["echo", "hello"]\n'
         )
+        assert any("sudo" in warning for warning in result.warnings)
 
