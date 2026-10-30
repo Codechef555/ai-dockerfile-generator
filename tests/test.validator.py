@@ -244,4 +244,5 @@ class TestDockerfileValidator:
             "COPY --from=builder /install /usr/local\n"
             'CMD ["python", "main.py"]\n'
         )
+        assert result.is_valid is True
 
