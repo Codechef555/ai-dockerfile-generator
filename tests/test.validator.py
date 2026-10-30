@@ -104,3 +104,11 @@ class TestDockerfileValidator:
         )
         assert result.is_valid is True
         assert any("'latest' tag" in warning for warning in result.warnings)
+        
+    def test_missing_copy_produces_warning(self, validator):
+        """Missing COPY and ADD instructions should produce a warning."""
+        result = validator.validate(
+            "FROM python:3.11-slim\n"
+            "WORKDIR /app\n"
+            'CMD ["python", "main.py"]\n'
+        )
