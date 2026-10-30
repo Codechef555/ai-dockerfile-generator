@@ -211,3 +211,4 @@ class TestDockerfileValidator:
             f"{instruction}\n"
             'CMD ["python", "main.py"]\n'
         )
+        assert any("Potential secret" in warning for warning in result.warnings)
