@@ -114,3 +114,11 @@ class TestDockerfileValidator:
         )
         assert result.is_valid is True
         assert any("No COPY or ADD" in warning for warning in result.warnings)
+    
+    def test_missing_workdir_produces_warning(self, validator):
+        """Missing WORKDIR should produce a warning."""
+        result = validator.validate(
+            "FROM python:3.11-slim\n"
+            "COPY . .\n"
+            'CMD ["python", "main.py"]\n'
+        )
