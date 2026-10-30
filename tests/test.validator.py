@@ -167,4 +167,12 @@ class TestDockerfileValidator:
             'CMD ["python", "main.py"]\n'
         )
         assert any("curl" in warning for warning in result.warnings)
+    
+    def test_wget_pipe_shell_produces_warning(self, validator):
+        """wget piped directly to a shell should be flagged."""
+        result = validator.validate(
+            "FROM python:3.11-slim\n"
+            "RUN wget https://example.com/install.sh | bash\n"
+            'CMD ["python", "main.py"]\n'
+        )
 
