@@ -157,3 +157,5 @@ class TestDockerfileValidator:
             "USER 10001\n"
             'CMD ["python", "main.py"]\n'
         )
+        assert any("non-root final USER" in check for check in result.passed_checks)
+
