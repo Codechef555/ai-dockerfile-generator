@@ -122,3 +122,5 @@ class TestDockerfileValidator:
             "COPY . .\n"
             'CMD ["python", "main.py"]\n'
         )
+        assert result.is_valid is True
+        assert any("No WORKDIR" in warning for warning in result.warnings)
