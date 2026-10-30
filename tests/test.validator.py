@@ -222,4 +222,13 @@ class TestDockerfileValidator:
             'CMD ["python", "main.py"]\n'
         )
         assert any("HEALTHCHECK" in check for check in result.passed_checks)
-        
+    
+    def test_missing_healthcheck_produces_warning(self, validator):
+        """Missing HEALTHCHECK should produce a warning."""
+        result = validator.validate(
+            "FROM python:3.11-slim\n"
+            "WORKDIR /app\n"
+            "COPY . .\n"
+            'CMD ["python", "main.py"]\n'
+        )
+
