@@ -274,4 +274,7 @@ class TestDockerfileValidator:
         )
         assert result.is_valid is True
         assert result.warnings
+        
+if __name__ == "__main__":
+    raise SystemExit(pytest.main([__file__, "-v"]))
 
