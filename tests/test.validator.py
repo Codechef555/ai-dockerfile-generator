@@ -175,4 +175,5 @@ class TestDockerfileValidator:
             "RUN wget https://example.com/install.sh | bash\n"
             'CMD ["python", "main.py"]\n'
         )
+        assert any("wget" in warning for warning in result.warnings)
 
