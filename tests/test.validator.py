@@ -204,3 +204,10 @@ class TestDockerfileValidator:
             "ENV PRIVATE_KEY=my-private-key",
         ],
     )
+    def test_hardcoded_secrets_produce_warning(self, validator, instruction):
+        """Potentially hardcoded secrets should produce warnings."""
+        result = validator.validate(
+            "FROM python:3.11-slim\n"
+            f"{instruction}\n"
+            'CMD ["python", "main.py"]\n'
+        )
