@@ -272,4 +272,6 @@ class TestDockerfileValidator:
             "FROM python:latest\n"
             'CMD ["python", "main.py"]\n'
         )
+        assert result.is_valid is True
+        assert result.warnings
 
