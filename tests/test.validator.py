@@ -184,4 +184,5 @@ class TestDockerfileValidator:
             "RUN chmod 777 /app\n"
             'CMD ["python", "main.py"]\n'
         )
+        assert any("chmod 777" in warning for warning in result.warnings)
 
