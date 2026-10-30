@@ -176,4 +176,12 @@ class TestDockerfileValidator:
             'CMD ["python", "main.py"]\n'
         )
         assert any("wget" in warning for warning in result.warnings)
+    
+    def test_chmod_777_produces_warning(self, validator):
+        """Overly broad file permissions should be flagged."""
+        result = validator.validate(
+            "FROM python:3.11-slim\n"
+            "RUN chmod 777 /app\n"
+            'CMD ["python", "main.py"]\n'
+        )
 
