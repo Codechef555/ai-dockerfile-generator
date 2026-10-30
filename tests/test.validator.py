@@ -158,4 +158,12 @@ class TestDockerfileValidator:
             'CMD ["python", "main.py"]\n'
         )
         assert any("non-root final USER" in check for check in result.passed_checks)
+    
+    def test_curl_pipe_shell_produces_warning(self, validator):
+        """Downloading and executing a script directly should be flagged."""
+        result = validator.validate(
+            "FROM python:3.11-slim\n"
+            "RUN curl https://example.com/install.sh | sh\n"
+            'CMD ["python", "main.py"]\n'
+        )
 
