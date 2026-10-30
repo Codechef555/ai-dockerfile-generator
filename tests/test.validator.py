@@ -231,4 +231,5 @@ class TestDockerfileValidator:
             "COPY . .\n"
             'CMD ["python", "main.py"]\n'
         )
+        assert any("No HEALTHCHECK" in warning for warning in result.warnings)
 
