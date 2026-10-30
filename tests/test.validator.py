@@ -194,4 +194,5 @@ class TestDockerfileValidator:
             'CMD ["echo", "hello"]\n'
         )
         assert any("sudo" in warning for warning in result.warnings)
-
+    
+    @pytest.mark.parametrize
